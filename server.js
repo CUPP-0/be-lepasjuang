@@ -35,7 +35,12 @@ app.get("/api/wishes", async (req, res) => {
 
     res.json(rows);
   } catch (error) {
-    res.status(500).json({ message: "Gagal mengambil data" });
+    console.error("ERROR GET WISHES:", error);
+
+    res.status(500).json({
+      message: "Gagal mengambil data",
+      error: error.message
+    });
   }
 });
 

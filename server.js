@@ -11,7 +11,8 @@ app.use(
     origin: [
       "https://lepasjuang.smktibazma.sch.id",
       "http://localhost:3000",
-      "http://localhost:3001" // untuk development React Vite
+      "http://localhost:3001",
+      "https://belepasjuang.smktibazma.sch.id" // untuk development React Vite
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true

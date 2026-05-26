@@ -78,6 +78,28 @@ app.post("/api/wishes", async (req, res) => {
   }
 });
 
+app.get("/api/invitations/:slug", async (req, res) => {
+  try {
+    const { slug } = req.params;
+
+    const [rows] = await db.query(
+      "SELECT * FROM invitations WHERE slug=?",
+      [slug]
+    );
+
+    if (!rows.length) {
+      return res.status(404).json({
+        message: "Undangan tidak ditemukan"
+      });
+    }
+
+    res.json(rows[0]);
+
+  } catch(error) {
+    res.status(500).json(error);
+  }
+});
+
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, "0.0.0.0", () => {
